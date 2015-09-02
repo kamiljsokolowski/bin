@@ -20,5 +20,6 @@ apt-get update
 
 ### APPS
 sudo apt-get -y install curl tmux git vim irssi
+sudo apt-get -y install build-essential dkms VirtualBox-5.0; cd /tmp && wget http://download.virtualbox.org/virtualbox/5.0.2/Oracle_VM_VirtualBox_Extension_Pack-5.0.2-102096.vbox-extpack; sudo VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-*; cd           # headless vbox
 #------------------------------
 
