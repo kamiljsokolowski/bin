@@ -19,5 +19,6 @@ apt-get update
 
 
 ### APPS
+sudo apt-get -y install curl tmux git vim irssi
 #------------------------------
 
