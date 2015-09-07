@@ -12,7 +12,7 @@ sed -i -e '/extras.ubuntu.com/ s/# //' /etc/apt/sources.list            # Extras
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
 # VirtualBox repo
-sudo sh -c "echo 'deb http://download.virtualbox.org/virtualbox/debian '$(lsb_release -cs)' contrib non-free' > /etc/apt/sources.list.d/virtualbox.list"
+sh -c "echo 'deb http://download.virtualbox.org/virtualbox/debian '$(lsb_release -cs)' contrib non-free' > /etc/apt/sources.list.d/virtualbox.list"
 wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
 # Docker repo
 echo deb https://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list
@@ -23,17 +23,17 @@ apt-get update
 
 
 ### APPS
-sudo apt-get -y install curl tmux git vim irssi
+apt-get -y install curl tmux git vim irssi
 # (headless) Virtualbox
-sudo apt-get -y install build-essential dkms VirtualBox-5.0
+apt-get -y install build-essential dkms VirtualBox-5.0
 cd /tmp && wget http://download.virtualbox.org/virtualbox/5.0.2/Oracle_VM_VirtualBox_Extension_Pack-5.0.2-102096.vbox-extpack
-sudo VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-*
+VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-*
 cd
 # Docker
-sudo apt-get -y install lxc-docker
-DEFAULT_FORWARD_POLICY="DROP" -> "ACCEPT" /etc/default/ufw
-ufw reload
+apt-get -y install lxc-docker
+#DEFAULT_FORWARD_POLICY="DROP" -> "ACCEPT" /etc/default/ufw
+#ufw reload
 ln -sf /usr/bin/docker.io /usr/local/bin/docker
-sudo sed -i '$acomplete -F _docker docker' /etc/bash_completion.d/docker.io
-sudo update-rc.d docker.io defaults
+sed -i '$acomplete -F _docker docker' /etc/bash_completion.d/docker.io
+update-rc.d docker.io defaults
 
