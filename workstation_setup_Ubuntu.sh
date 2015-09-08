@@ -36,4 +36,8 @@ curl -sSL https://get.docker.com | sh
 #ln -sf /usr/bin/docker.io /usr/local/bin/docker
 #sed -i '$acomplete -F _docker docker' /etc/bash_completion.d/docker.io
 #update-rc.d docker.io defaults
+# Vagrant
+wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.4_x86_64.deb
+dpkg -i vagrant_1.7.4_x86_64.deb
+apt-get -y install libxslt-dev libxml2-dev libvirt-dev zlib1g-dev
 
