@@ -9,6 +9,7 @@ user='whoami'
 #guest_user=$2
 guest=
 guest_user=
+image=
 
 ### add check if variables are present ###
 
@@ -29,4 +30,7 @@ sudo shutdown -h now
 '
 
 # (on HOST)
-
+sudo bash <<EOF
+mv /vmdata/storage/${image}.img /vmdata/storage/${image}.img.backup
+qemu-img convert -O qcow2 /vmdata/storage/${image}.img.backup /vmdata/storage/${image}.img
+EOF
