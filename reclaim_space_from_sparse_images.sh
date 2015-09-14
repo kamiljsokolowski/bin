@@ -21,16 +21,16 @@ if [ "$guest_user" = "" ]; then
 fi
 
 ### (on GUEST) ###
-ssh -T $guest_user@$guest '
+ssh -T $guest_user@$guest<<EOSSH
 sudo dd if=/dev/zero of=/mytempfile
 sudo rm -rf /mytempfile
 sudo shutdown -h now
-'
+EOSSH
 
 ### (on HOST) ###
 sudo bash <<EOF
 mv /vmdata/storage/${image}.img /vmdata/storage/${image}.img.backup
 qemu-img convert -O qcow2 /vmdata/storage/${image}.img.backup /vmdata/storage/${image}.img
-virsh start --domain $image
+virsh start --domain $image && rm -rf /vmdata/storage/${image}.img.backup
 EOF
 
