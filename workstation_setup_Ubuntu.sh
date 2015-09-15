@@ -10,12 +10,12 @@ sudo sed -i -e '/ partner/ s/# //' /etc/apt/sources.list         # Partner
 sudo sed -i -e '/extras.ubuntu.com/ s/# //' /etc/apt/sources.list            # Extras
 # Google repo
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-sudo echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
+echo "deb http://dl.google.com/linux/chrome/deb/ stable main" |sudo tee --append /etc/apt/sources.list.d/google.list
 # VirtualBox repo
 sudo sh -c "echo 'deb http://download.virtualbox.org/virtualbox/debian '$(lsb_release -cs)' contrib non-free' > /etc/apt/sources.list.d/virtualbox.list"
 wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
 # Docker repo
-#sudo echo deb https://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list
+#echo deb https://get.docker.io/ubuntu docker main |sudo tee --append /etc/apt/sources.list.d/docker.list
 #sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
 # open source Silverlight counterpart repo
 sudo apt-add-repository -y ppa:pipelight/stable
@@ -25,7 +25,7 @@ sudo apt-get update
 ### APPS ###
 sudo apt-get -y install curl tmux git vim irssi zsh
 # (optional) zsh + oh-my-zsh plugin (requires reboot)
-wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - |sudo zsh
 chsh -s `which zsh`
 # (headless) Virtualbox
 sudo apt-get -y install build-essential dkms VirtualBox-5.0
