@@ -4,7 +4,7 @@ set -o verbose
 set -o errexit
 #set -o nounset
 
-### SYSTEM
+### SYSTEM ###
 # additional Ubuntu repositories
 sed -i -e '/ partner/ s/# //' /etc/apt/sources.list         # Partner
 sed -i -e '/extras.ubuntu.com/ s/# //' /etc/apt/sources.list            # Extras
@@ -22,8 +22,11 @@ apt-add-repository -y ppa:pipelight/stable
 apt-get update
 
 
-### APPS
-apt-get -y install curl tmux git vim irssi
+### APPS ###
+apt-get -y install curl tmux git vim irssi zsh
+# (optional) zsh + oh-my-zsh plugin (requires reboot)
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+chsh -s `which zsh`
 # (headless) Virtualbox
 apt-get -y install build-essential dkms VirtualBox-5.0
 cd /tmp && wget http://download.virtualbox.org/virtualbox/5.0.2/Oracle_VM_VirtualBox_Extension_Pack-5.0.2-102096.vbox-extpack
