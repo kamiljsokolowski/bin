@@ -44,3 +44,11 @@ wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.4_x86_64.deb
 sudo dpkg -i vagrant_1.7.4_x86_64.deb
 sudo apt-get -y install libxslt-dev libxml2-dev libvirt-dev zlib1g-dev
 
+
+### USER ###
+# dotfiles
+git clone https://github.com/sokolowskik/dotfiles.git .dotfiles
+cd .dotfiles
+chmod +x bootstrap.sh
+./bootstrap.sh
+
