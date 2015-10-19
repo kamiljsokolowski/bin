@@ -23,7 +23,7 @@ sudo apt-get update
 
 
 ### APPS ###
-sudo apt-get -y install curl tmux git vim irssi zsh
+sudo apt-get -y install curl tmux git vim irssi zsh python-pip
 # (optional) zsh + oh-my-zsh plugin (requires reboot)
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - |sudo zsh
 chsh -s `which zsh`
