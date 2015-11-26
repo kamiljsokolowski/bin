@@ -33,6 +33,9 @@ cd /tmp && wget http://download.virtualbox.org/virtualbox/5.0.2/Oracle_VM_Virtua
 sudo VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-*
 cd
 # Docker (repo config included)
+sudo apt-get install -y linux-image-extra-$(uname -r)
+sudo echo aufs >> /etc/modules
+sudo modprobe aufs
 curl -sSL https://get.docker.com | sh
 #sudo DEFAULT_FORWARD_POLICY="DROP" -> "ACCEPT" /etc/default/ufw
 #sudo ufw reload
