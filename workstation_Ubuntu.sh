@@ -1,29 +1,17 @@
 #!/usr/bin/env bash
-set -o xtrace
-set -o verbose
-set -o errexit
-#set -o nounset
+set -x
+set -v
 
-### SYSTEM ###
-# additional Ubuntu repositories
+# enable additional repositories & add 3rd party ones
 sudo sed -i -e '/ partner/ s/# //' /etc/apt/sources.list         # Partner
 sudo sed -i -e '/extras.ubuntu.com/ s/# //' /etc/apt/sources.list            # Extras
-# Google repo
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-echo "deb http://dl.google.com/linux/chrome/deb/ stable main" |sudo tee --append /etc/apt/sources.list.d/google.list
-# VirtualBox repo
-sudo sh -c "echo 'deb http://download.virtualbox.org/virtualbox/debian '$(lsb_release -cs)' contrib non-free' > /etc/apt/sources.list.d/virtualbox.list"
-wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
-# Docker repo
-#echo deb https://get.docker.io/ubuntu docker main |sudo tee --append /etc/apt/sources.list.d/docker.list
-#sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
-# open source Silverlight counterpart repo
-sudo apt-add-repository -y ppa:pipelight/stable
-sudo apt-get update
+sudo sh -c "echo 'deb http://download.virtualbox.org/virtualbox/debian '$(lsb_release -cs)' contrib non-free' > /etc/apt/sources.list.d/virtualbox.list" && wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -           # Virtualbox
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" |sudo tee --append /etc/apt/sources.list.d/google.list         # Google Chrome repo
+sudo apt-add-repository -y ppa:pipelight/stable         # Silverlight OSS counterpart
 
 
-### APPS ###
-sudo apt-get install -y \
+# install APPS
+sudo apt-get update -q && apt-get install -y \
     curl \
     tmux \
     git \
