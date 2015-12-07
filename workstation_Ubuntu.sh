@@ -21,7 +21,14 @@ sudo apt-add-repository -y ppa:pipelight/stable         # Silverlight OSS counte
 
 ### sysadmin
 sudo apt-get update -q && apt-get install -y \
-    htop
+    htop \
+    cifs-utils \
+    unzip \
+    unrar \
+    p7zip-full \
+    p7zip-rar \
+    tcpdump \
+    nmap
 
 ### server
 # (headless) Virtualbox
