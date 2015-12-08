@@ -20,8 +20,7 @@ sudo apt-add-repository -y ppa:pipelight/stable         # Silverlight OSS counte
 #sudo chmod 0700 /root
 
 ### sysadmin
-sudo apt-get update -q && apt-get install -y \
-    ssh \
+sudo apt-get update -q && sudo apt-get install -y \
     htop \
     cifs-utils \
     unzip \
@@ -53,7 +52,7 @@ sudo dpkg -i vagrant_1.7.4_x86_64.deb
 sudo apt-get -y install libxslt-dev libxml2-dev libvirt-dev zlib1g-dev
 
 ### apps
-sudo apt-get update -q && apt-get install -y \
+sudo apt-get update -q && sudo apt-get install -y \
     curl \
     tmux \
     git \
