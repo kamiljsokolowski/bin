@@ -21,6 +21,7 @@ sudo apt-add-repository -y ppa:pipelight/stable         # Silverlight OSS counte
 
 ### sysadmin
 sudo apt-get update -q && apt-get install -y \
+    ssh \
     htop \
     cifs-utils \
     unzip \
