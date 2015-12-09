@@ -38,7 +38,7 @@ sudo VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-*
 cd
 # Docker (repo config included)
 sudo apt-get install -y linux-image-extra-$(uname -r)
-sudo echo aufs >> /etc/modules
+echo "aufs" |sudo tee -a /etc/modules
 sudo modprobe aufs
 curl -sSL https://get.docker.com | sh
 #sudo DEFAULT_FORWARD_POLICY="DROP" -> "ACCEPT" /etc/default/ufw
@@ -67,8 +67,8 @@ chsh -s `which zsh`
 
 ### local
 # dotfiles
-git clone https://github.com/sokolowskik/dotfiles.git .dotfiles
-cd .dotfiles
-chmod +x bootstrap.sh
-./bootstrap.sh
+#git clone https://github.com/sokolowskik/dotfiles.git .dotfiles
+#cd .dotfiles
+#chmod +x bootstrap.sh
+#./bootstrap.sh
 
