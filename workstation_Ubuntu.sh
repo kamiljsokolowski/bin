@@ -65,10 +65,3 @@ sudo apt-get update -q && sudo apt-get install -y \
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - |sudo zsh
 chsh -s `which zsh`
 
-### local
-# dotfiles
-#git clone https://github.com/sokolowskik/dotfiles.git .dotfiles
-#cd .dotfiles
-#chmod +x bootstrap.sh
-#./bootstrap.sh
-
