@@ -32,6 +32,12 @@ sudo apt-get update -q && sudo apt-get install -y \
     nmap
 
 ### server
+# KVM/QEMU+libvirt
+sudo apt-get update -q && sudo apt-get install -y \
+    qemu-kvm \
+    libvirt-bin \
+    bridge-utils \
+    libguestfs-tools 
 # (headless) Virtualbox
 sudo apt-get -y install build-essential dkms VirtualBox-5.0
 cd /tmp && wget http://download.virtualbox.org/virtualbox/5.0.2/Oracle_VM_VirtualBox_Extension_Pack-5.0.2-102096.vbox-extpack
