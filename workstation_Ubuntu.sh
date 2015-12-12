@@ -73,3 +73,31 @@ sudo apt-get update -q && sudo apt-get install -y \
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - |sudo zsh
 chsh -s `which zsh`
 
+### desktop
+# DE
+sudo apt-get update -q && sudo apt-get install -y \
+    ubuntu-gnome-desktop \
+    gnome-tweak-tool \
+    dconf-editor
+# web
+sudo apt-get update -q && sudo apt-get install -y \
+    google-chrome-stable \
+    pidgin \
+    pidgin-sipe \
+    deluge \
+    rdesktop \
+    flash-plugin-installer \
+    icedtea-7-plugin \
+    openjdk-7-jre \
+    pipelight-multi \
+    && sudo pipelight-plugin --enable silverlight \
+    && sudo pipelight-plugin --enable widevine
+# media
+sudo apt-get update -q && sudo apt-get install -y \
+    ubuntu-restricted-extras \
+    ubuntu-restricted-addons \
+    libdvdcss2 \
+    libdvdnav4 \
+    libdvdread4 \
+    vlc
+
