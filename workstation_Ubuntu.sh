@@ -57,6 +57,9 @@ curl -sSL https://get.docker.com | sh
 wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.4_x86_64.deb
 sudo dpkg -i vagrant_1.7.4_x86_64.deb
 sudo apt-get -y install libxslt-dev libxml2-dev libvirt-dev zlib1g-dev
+vagrant plugin install vagrant-rekey-ssh \
+    vagrant-mutate \
+    vagrant-libvirt
 
 ### apps
 sudo apt-get update -q && sudo apt-get install -y \
