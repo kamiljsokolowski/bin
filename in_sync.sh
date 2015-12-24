@@ -26,14 +26,20 @@ if_in_sync ()
 {
     src=$1
     targ=$2
+    fail=0
     for LINE in `find ${src}/ -type f -printf "%P\n"`
     do
         if [[ ! -f ${targ}/${LINE} ]]
         then
-            echo "${LINE} was not synced"
-            exit $E_NOFILE
+            echo "${LINE} is not in sync"
+            let "fail++"
         fi
     done
+    if [ $fail != 0 ]
+    then
+        echo "Total of ${fail} files are not in sync"
+        exit $E_NOFILE
+    fi
 }
 
 ### tests
