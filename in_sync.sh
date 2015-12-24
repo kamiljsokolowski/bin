@@ -52,7 +52,7 @@ dir_exists ${LOCAL}
 dir_exists ${REMOTE}
 
 ### sync
-rsync -avz ${LOCAL}/ ${REMOTE}
+rsync -aAXH --numeric-ids --info=progress2 ${LOCAL} ${REMOTE}
 
 ### check if in sync
 if_in_sync ${LOCAL} ${REMOTE}
