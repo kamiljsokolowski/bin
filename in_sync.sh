@@ -55,11 +55,11 @@ dir_exists ${REMOTE}
 echo "Creating snapshot directory structure..."
 mkdir -p ${REMOTE}/snapshot-$(date +%d.%m.%y)/{etc} && echo "Snapshot directory structure has been created."
 # sysconfig
-echo "Synchronizing system configuration..."
-sudo rsync -aAXH --numeric-ids --info=progress2 /etc/ ${REMOTE}/snapshot-$(date +%d.%m.%y)/etc/
-echo "System configuration has been synchronized."
+echo "Creating system configuration snapshot..."
+sudo rsync -aAX --no-links --numeric-ids --info=progress2 /etc/ ${REMOTE}/snapshot-$(date +%d.%m.%y)/etc/
+echo "System configuration snapshot created."
 
 ### check if in sync
-echo "Checking if system configuration BACKUP is in sync with the SOURCE directory..."
-if_in_sync /etc/ ${REMOTE}/snapshot-$(date +%d.%m.%y)/etc/
+echo "Validating if system configuration snapshot..."
+sudo if_in_sync /etc/ ${REMOTE}/snapshot-$(date +%d.%m.%y)/etc/
 
