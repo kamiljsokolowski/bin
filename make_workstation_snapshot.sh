@@ -9,6 +9,7 @@ E_NOARGS=75
 E_BADDIR=85
 
 #CURRENT=`pwd`
+SYNC='rsync -aAX --no-links --numeric-ids --info=progress2'
 OPT=$1
 DEST=$2/snapshot-$(date +%d.%m.%y)
 
@@ -58,7 +59,7 @@ case ${OPT} in
     dir_exists ${DEST}/etc
     # sysconfig
     echo "Creating system configuration snapshot..."
-    sudo rsync -aAX --no-links --numeric-ids --info=progress2 /etc/{apt,fstab} ${DEST}/etc/ && echo "System configuration snapshot created."
+    sudo ${SYNC} /etc/{apt,fstab} ${DEST}/etc/ && echo "System configuration snapshot created."
     #echo "Validating system configuration snapshot..."
     #if_in_sync /etc/ ${DEST}/snapshot-$(date +%d.%m.%y)/etc/
     ;;
@@ -67,7 +68,7 @@ case ${OPT} in
     dir_exists ${DEST}/etc
     # sysconfig
     echo "Creating system configuration snapshot..."
-    sudo rsync -aAX --no-links --numeric-ids --info=progress2 /etc/{apt,fstab} ${DEST}/etc/ && echo "System configuration snapshot created."
+    sudo ${SYNC} /etc/{apt,fstab} ${DEST}/etc/ && echo "System configuration snapshot created."
     #echo "Validating if system configuration snapshot..."
     #if_in_sync /etc/ ${DEST}/snapshot-$(date +%d.%m.%y)/etc/
     ;;
