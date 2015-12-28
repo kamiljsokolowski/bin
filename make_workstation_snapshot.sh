@@ -59,8 +59,8 @@ case ${OPT} in
     # sysconfig
     echo "Creating system configuration snapshot..."
     sudo rsync -aAX --no-links --numeric-ids --info=progress2 /etc/{apt,fstab} ${DEST}/etc/ && echo "System configuration snapshot created."
-    echo "Validating system configuration snapshot..."
-    if_in_sync /etc/ ${DEST}/snapshot-$(date +%d.%m.%y)/etc/
+    #echo "Validating system configuration snapshot..."
+    #if_in_sync /etc/ ${DEST}/snapshot-$(date +%d.%m.%y)/etc/
     ;;
 "--sysconfig")
     # first create directory structure
@@ -68,8 +68,8 @@ case ${OPT} in
     # sysconfig
     echo "Creating system configuration snapshot..."
     sudo rsync -aAX --no-links --numeric-ids --info=progress2 /etc/{apt,fstab} ${DEST}/etc/ && echo "System configuration snapshot created."
-    echo "Validating if system configuration snapshot..."
-    if_in_sync /etc/ ${DEST}/snapshot-$(date +%d.%m.%y)/etc/
+    #echo "Validating if system configuration snapshot..."
+    #if_in_sync /etc/ ${DEST}/snapshot-$(date +%d.%m.%y)/etc/
     ;;
 esac
 
