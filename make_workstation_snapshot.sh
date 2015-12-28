@@ -18,7 +18,7 @@ dir_exists ()
     if [ ! -d "${dir}" ]
     then
         echo "'${dir}' does not exist. Creating..."
-        mkdir -p ${REMOTE}
+        mkdir -p ${dir}
         echo "'${dir}' has been created."
     fi
 }
@@ -49,23 +49,23 @@ if [ $# -lt 1 ]; then
     exit $E_NOARGS
 fi
 
-dir_exists ${REMOTE}
+dir_exists ${REMOTE}/snapshot-$(date +%d.%m.%y)
 
 ### make snapshot
-# first create directory structure
-echo "Creating snapshot directory structure..."
-mkdir -p ${REMOTE}/snapshot-$(date +%d.%m.%y)/{etc} && echo "Snapshot directory structure has been created."
-
 case ${OPT} in
 "--all")
+    # first create directory structure
+    dir_exists ${REMOTE}/snapshot-$(date +%d.%m.%y)/etc
     # sysconfig
     echo "Creating system configuration snapshot..."
     sudo rsync -aAX --no-links --numeric-ids --info=progress2 /etc/ ${REMOTE}/snapshot-$(date +%d.%m.%y)/etc/
     echo "System configuration snapshot created."
-    echo "Validating if system configuration snapshot..."
+    echo "Validating system configuration snapshot..."
     if_in_sync /etc/ ${REMOTE}/snapshot-$(date +%d.%m.%y)/etc/
     ;;
 "--sysconfig")
+    # first create directory structure
+    dir_exists ${REMOTE}/snapshot-$(date +%d.%m.%y)/etc
     # sysconfig
     echo "Creating system configuration snapshot..."
     sudo rsync -aAX --no-links --numeric-ids --info=progress2 /etc/ ${REMOTE}/snapshot-$(date +%d.%m.%y)/etc/
