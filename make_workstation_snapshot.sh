@@ -15,6 +15,7 @@ SYNC='rsync -aAX --no-links --numeric-ids --info=progress2'
 OPT=$1
 DEST=$2
 BACKUP=${DEST}/Archive/BACKUP/${HOST}/snapshot-$(date +%d.%m.%y)
+SHARED=${DEST}/Archive/SHARED/snapshot-$(date +%d.%m.%y)
 
 dir_exists ()
 {
@@ -67,9 +68,17 @@ case ${OPT} in
     #if_in_sync /etc/ ${BACKUP}/etc/
     # dotfiles
     echo "Creating user configuration snapshot..."
-    sudo ${SYNC} /home/${USER}/{.credentials,.ssh} ${BACKUP}/home/${USER}/ && echo "User configuration snapshot created."
+    ${SYNC} /home/${USER}/{.credentials,.ssh} ${BACKUP}/home/${USER}/ && echo "User configuration snapshot created."
     #echo "Validating user configuration snapshot..."
     #if_in_sync /home/${USER}/ ${BACKUP}/home/${USER}/
+
+    ### SHARED
+    # first create directory structure
+    dir_exists ${SHARED}/Dropbox
+    echo "Creating cloud storage snapshot..."
+    ${SYNC} /home/${USER}/Dropbox/ ${SHARED}/Dropbox/ && echo "Cloud storage snapshot created."
+    #echo "Validating cloud storage snapshot..."
+    #if_in_sync /home/${USER}/Dropbox/ ${SHARED}/Dropbox/
     ;;
 "--backup")
     # first create directory structure
@@ -82,9 +91,18 @@ case ${OPT} in
     #if_in_sync /etc/ ${BACKUP}/etc/
     # dotfiles
     echo "Creating user configuration snapshot..."
-    sudo ${SYNC} /home/${USER}/{.credentials,.ssh} ${BACKUP}/home/${USER}/ && echo "User configuration snapshot created."
+    ${SYNC} /home/${USER}/{.credentials,.ssh} ${BACKUP}/home/${USER}/ && echo "User configuration snapshot created."
     #echo "Validating user configuration snapshot..."
     #if_in_sync /home/${USER}/ ${BACKUP}/home/${USER}/
+    ;;
+"--shared")
+    # first create directory structure
+    dir_exists ${SHARED}/Dropbox
+    # Dropbox
+    echo "Creating Dropbox cloud storage snapshot..."
+    ${SYNC} /home/${USER}/Dropbox/ ${SHARED}/Dropbox/ && echo "Dropbox cloud storage snapshot created."
+    #echo "Validating Dropbox cloud storage snapshot..."
+    #if_in_sync /home/${USER}/Dropbox/ ${SHARED}/Dropbox/
     ;;
 esac
 
