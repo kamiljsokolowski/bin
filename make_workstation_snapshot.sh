@@ -10,6 +10,7 @@ E_BADDIR=85
 
 #CURRENT=`pwd`
 HOST=$(hostname)
+USER=$(whoami)
 SYNC='rsync -aAX --no-links --numeric-ids --info=progress2'
 OPT=$1
 DEST=$2
@@ -55,22 +56,35 @@ fi
 ### make snapshot
 case ${OPT} in
 "--all")
+    ### BACKUP
     # first create directory structure
     dir_exists ${BACKUP}/etc
+    dir_exists ${BACKUP}/home/${USER}
     # sysconfig
     echo "Creating system configuration snapshot..."
     sudo ${SYNC} /etc/{apt,fstab} ${BACKUP}/etc/ && echo "System configuration snapshot created."
     #echo "Validating system configuration snapshot..."
     #if_in_sync /etc/ ${BACKUP}/etc/
+    # dotfiles
+    echo "Creating user configuration snapshot..."
+    sudo ${SYNC} /home/${USER}/{.credentials,.ssh} ${BACKUP}/home/${USER}/ && echo "User configuration snapshot created."
+    #echo "Validating user configuration snapshot..."
+    #if_in_sync /home/${USER}/ ${BACKUP}/home/${USER}/
     ;;
-"--sysconfig")
+"--backup")
     # first create directory structure
     dir_exists ${BACKUP}/etc
+    dir_exists ${BACKUP}/home/${USER}
     # sysconfig
     echo "Creating system configuration snapshot..."
     sudo ${SYNC} /etc/{apt,fstab} ${BACKUP}/etc/ && echo "System configuration snapshot created."
-    #echo "Validating if system configuration snapshot..."
+    #echo "Validating system configuration snapshot..."
     #if_in_sync /etc/ ${BACKUP}/etc/
+    # dotfiles
+    echo "Creating user configuration snapshot..."
+    sudo ${SYNC} /home/${USER}/{.credentials,.ssh} ${BACKUP}/home/${USER}/ && echo "User configuration snapshot created."
+    #echo "Validating user configuration snapshot..."
+    #if_in_sync /home/${USER}/ ${BACKUP}/home/${USER}/
     ;;
 esac
 
