@@ -10,7 +10,7 @@ E_BADDIR=85
 
 #CURRENT=`pwd`
 OPT=$1
-REMOTE=$2
+DEST=$2/snapshot-$(date +%d.%m.%y)
 
 dir_exists ()
 {
@@ -49,29 +49,27 @@ if [ $# -lt 1 ]; then
     exit $E_NOARGS
 fi
 
-dir_exists ${REMOTE}/snapshot-$(date +%d.%m.%y)
+dir_exists ${DEST}
 
 ### make snapshot
 case ${OPT} in
 "--all")
     # first create directory structure
-    dir_exists ${REMOTE}/snapshot-$(date +%d.%m.%y)/etc
+    dir_exists ${DEST}/etc
     # sysconfig
     echo "Creating system configuration snapshot..."
-    sudo rsync -aAX --no-links --numeric-ids --info=progress2 /etc/ ${REMOTE}/snapshot-$(date +%d.%m.%y)/etc/
-    echo "System configuration snapshot created."
+    sudo rsync -aAX --no-links --numeric-ids --info=progress2 /etc/{apt,fstab} ${DEST}/etc/ && echo "System configuration snapshot created."
     echo "Validating system configuration snapshot..."
-    if_in_sync /etc/ ${REMOTE}/snapshot-$(date +%d.%m.%y)/etc/
+    if_in_sync /etc/ ${DEST}/snapshot-$(date +%d.%m.%y)/etc/
     ;;
 "--sysconfig")
     # first create directory structure
-    dir_exists ${REMOTE}/snapshot-$(date +%d.%m.%y)/etc
+    dir_exists ${DEST}/etc
     # sysconfig
     echo "Creating system configuration snapshot..."
-    sudo rsync -aAX --no-links --numeric-ids --info=progress2 /etc/ ${REMOTE}/snapshot-$(date +%d.%m.%y)/etc/
-    echo "System configuration snapshot created."
+    sudo rsync -aAX --no-links --numeric-ids --info=progress2 /etc/{apt,fstab} ${DEST}/etc/ && echo "System configuration snapshot created."
     echo "Validating if system configuration snapshot..."
-    if_in_sync /etc/ ${REMOTE}/snapshot-$(date +%d.%m.%y)/etc/
+    if_in_sync /etc/ ${DEST}/snapshot-$(date +%d.%m.%y)/etc/
     ;;
 esac
 
