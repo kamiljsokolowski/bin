@@ -16,6 +16,7 @@ OPT=$1
 DEST=$2
 BACKUP=${DEST}/Archive/BACKUP/${HOST}/snapshot-$(date +%d.%m.%y)
 SHARED=${DEST}/Archive/SHARED/snapshot-$(date +%d.%m.%y)
+VMDATA=/mnt/vmdata/snapshot-$(date +%d.%m.%y)
 
 dir_exists ()
 {
@@ -79,6 +80,12 @@ case ${OPT} in
     ${SYNC} /home/${USER}/Dropbox/ ${SHARED}/Dropbox/ && echo "Cloud storage snapshot created."
     #echo "Validating cloud storage snapshot..."
     #if_in_sync /home/${USER}/Dropbox/ ${SHARED}/Dropbox/
+
+    ### VMDATA
+    echo "Creating vmdata snapshot..."
+    sudo ${SYNC} /vmdata/ ${VMDATA}/ && echo "vmdata snapshot created."
+    #echo "Validating vmdata snapshot..."
+    #if_in_sync /vmdata/ ${VMDATA}/
     ;;
 "--backup")
     # first create directory structure
@@ -103,6 +110,12 @@ case ${OPT} in
     ${SYNC} /home/${USER}/Dropbox/ ${SHARED}/Dropbox/ && echo "Dropbox cloud storage snapshot created."
     #echo "Validating Dropbox cloud storage snapshot..."
     #if_in_sync /home/${USER}/Dropbox/ ${SHARED}/Dropbox/
+    ;;
+"--vm")
+    echo "Creating vmdata snapshot..."
+    sudo ${SYNC} /vmdata/ ${VMDATA}/ && echo "vmdata snapshot created."
+    #echo "Validating vmdata snapshot..."
+    #if_in_sync /vmdata/ ${VMDATA}/
     ;;
 esac
 
