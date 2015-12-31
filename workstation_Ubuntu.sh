@@ -89,7 +89,7 @@ sudo apt-get update -q && sudo apt-get install -y \
     pidgin-sipe \
     deluge \
     rdesktop \
-    flash-plugin-installer \
+    browser-plugin-freshplayer-pepperflash \
     icedtea-7-plugin \
     openjdk-7-jre \
     pipelight-multi \
