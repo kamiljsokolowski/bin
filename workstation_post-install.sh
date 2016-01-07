@@ -71,7 +71,8 @@ sudo apt-get update -q && sudo apt-get install -y \
     irssi \
     zsh \
     python-setuptools \
- && sudo easy_install pip
+ && sudo easy_install pip \
+ && sudo pip install fabric
 # (optional) zsh + oh-my-zsh plugin (requires reboot)
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - |sudo zsh
 chsh -s `which zsh`
