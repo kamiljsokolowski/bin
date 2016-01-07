@@ -82,6 +82,9 @@ sudo apt-get update -q && sudo apt-get install -y \
     ubuntu-gnome-desktop \
     gnome-tweak-tool \
     dconf-editor
+# sysadmin
+sudo apt-get update -q && sudo apt-get install -y \
+    vinagre
 # web
 sudo apt-get update -q && sudo apt-get install -y \
     google-chrome-stable \
