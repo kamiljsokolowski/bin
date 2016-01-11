@@ -29,7 +29,10 @@ sudo apt-get update -q && sudo apt-get install -y \
     p7zip-full \
     p7zip-rar \
     tcpdump \
-    nmap
+    nmap \
+    python-setuptools \
+ && sudo easy_install pip \
+ && sudo pip install fabric
 
 ### server
 # KVM/QEMU+libvirt
@@ -69,10 +72,8 @@ sudo apt-get update -q && sudo apt-get install -y \
     git \
     vim \
     irssi \
-    zsh \
-    python-setuptools \
- && sudo easy_install pip \
- && sudo pip install fabric
+    zsh 
+
 # (optional) zsh + oh-my-zsh plugin (requires reboot)
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - |sudo zsh
 chsh -s `which zsh`
