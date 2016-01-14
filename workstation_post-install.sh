@@ -32,7 +32,9 @@ sudo apt-get update -q && sudo apt-get install -y \
     nmap \
     python-setuptools \
  && sudo easy_install pip \
- && sudo pip install fabric
+ && sudo pip install \
+    fabric \
+    pyyaml
 
 ### server
 # KVM/QEMU+libvirt
