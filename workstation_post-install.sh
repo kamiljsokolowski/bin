@@ -30,10 +30,7 @@ sudo apt-get update -q && sudo apt-get install -y \
     tcpdump \
     nmap \
     python-setuptools \
- && sudo easy_install pip \
- && sudo pip install \
-    fabric \
-    pyyaml
+ && sudo easy_install pip
 
 ### server
 # KVM/QEMU+libvirt
