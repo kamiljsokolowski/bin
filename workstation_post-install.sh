@@ -28,6 +28,7 @@ sudo apt-get update -q && sudo apt-get install -y \
     p7zip-full \
     p7zip-rar \
     tcpdump \
+    tree \
     nmap \
     python-setuptools \
  && sudo easy_install pip
