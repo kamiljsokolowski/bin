@@ -86,6 +86,7 @@ sudo apt-get update -q && sudo apt-get install -y \
     dconf-editor
 # sysadmin
 sudo apt-get update -q && sudo apt-get install -y \
+    wireshark \
     vinagre
 # web
 sudo apt-get update -q && sudo apt-get install -y \
