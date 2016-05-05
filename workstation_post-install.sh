@@ -30,6 +30,7 @@ sudo apt-get update -q && sudo apt-get install -y \
     tcpdump \
     tree \
     nmap \
+    iptraf-ng \
     python-setuptools \
  && sudo easy_install pip
 
