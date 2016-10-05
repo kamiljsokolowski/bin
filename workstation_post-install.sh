@@ -62,10 +62,15 @@ sudo apt-get update -q && sudo apt-get install -y \
 #sudo sed -i '$acomplete -F _docker docker' /etc/bash_completion.d/docker.io
 #sudo update-rc.d docker.io defaults
 # Vagrant
-wget https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb
-sudo dpkg -i vagrant_1.8.1_x86_64.deb
-sudo apt-get -y install libxslt-dev libxml2-dev libvirt-dev zlib1g-dev
-vagrant plugin install vagrant-rekey-ssh \
+sudo apt-get update -q && sudo apt-get install -y \
+    libxslt-dev \
+    libxml2-dev \
+    libvirt-dev \
+    zlib1g-dev
+wget https://releases.hashicorp.com/vagrant/1.8.6/vagrant_1.8.6_x86_64.deb
+sudo dpkg -i vagrant_1.8.6_x86_64.deb
+vagrant plugin install \
+    vagrant-rekey-ssh \
     vagrant-mutate \
     vagrant-libvirt
 
