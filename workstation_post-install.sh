@@ -8,6 +8,7 @@
 sudo sed -i -e '/ partner/ s/# //' /etc/apt/sources.list         # Partner
 sudo sed -i -e '/extras.ubuntu.com/ s/# //' /etc/apt/sources.list            # Extras
 sudo sh -c "echo 'deb http://download.virtualbox.org/virtualbox/debian '$(lsb_release -cs)' contrib non-free' > /etc/apt/sources.list.d/virtualbox.list" && wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -           # Virtualbox
+sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D && echo "deb https://apt.dockerproject.org/repo ubuntu-$(lsb_release -c -s) main" |sudo tee -a /etc/apt/sources.list.d/docker.list
 echo "deb http://linux.dropbox.com/ubuntu $(lsb_release -cs) main" |sudo tee -a /etc/apt/sources.list.d/dropbox.list && sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 1C61A2656FB57B7E4DE0F4C1FC918B335044912E            # Dropbox
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - && echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" |sudo tee --append /etc/apt/sources.list.d/google.list         # Google Chrome repo
 sudo apt-add-repository -y ppa:pipelight/stable         # Silverlight OSS counterpart
@@ -47,10 +48,14 @@ cd /tmp && wget http://download.virtualbox.org/virtualbox/5.1.6/Oracle_VM_Virtua
 sudo VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-*
 cd
 # Docker (repo config included)
-sudo apt-get install -y linux-image-extra-$(uname -r)
 echo "aufs" |sudo tee -a /etc/modules
 sudo modprobe aufs
-curl -sSL https://get.docker.com | sh
+sudo apt-get update -q && sudo apt-get install -y \
+    linux-image-extra-$(uname -r) \
+    build-essential \
+    apt-transport-https \
+    ca-certificates \
+    docker-engine
 #sudo DEFAULT_FORWARD_POLICY="DROP" -> "ACCEPT" /etc/default/ufw
 #sudo ufw reload
 #sudo ln -sf /usr/bin/docker.io /usr/local/bin/docker
