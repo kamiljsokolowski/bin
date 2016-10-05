@@ -42,8 +42,8 @@ sudo apt-get update -q && sudo apt-get install -y \
 #    bridge-utils \
 #    libguestfs-tools 
 # (headless) Virtualbox
-sudo apt-get -y install build-essential dkms VirtualBox-5.0
-cd /tmp && wget http://download.virtualbox.org/virtualbox/5.0.2/Oracle_VM_VirtualBox_Extension_Pack-5.0.2-102096.vbox-extpack
+sudo apt-get -y install build-essential dkms VirtualBox-5.1
+cd /tmp && wget http://download.virtualbox.org/virtualbox/5.1.6/Oracle_VM_VirtualBox_Extension_Pack-5.1.6.vbox-extpack
 sudo VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-*
 cd
 # Docker (repo config included)
