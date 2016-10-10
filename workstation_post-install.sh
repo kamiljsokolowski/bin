@@ -65,6 +65,8 @@ sudo apt-get update -q && sudo apt-get install -y \
     ca-certificates \
     docker-engine
 #curl -sSL https://get.docker.com/ | sh
+sudo groupadd docker || true
+sudo usermod -aG docker $USER
 #sudo DEFAULT_FORWARD_POLICY="DROP" -> "ACCEPT" /etc/default/ufw
 #sudo ufw reload
 #sudo ln -sf /usr/bin/docker.io /usr/local/bin/docker
