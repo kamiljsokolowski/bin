@@ -18,6 +18,9 @@ echo "deb http://linux.dropbox.com/ubuntu $(lsb_release -cs) main" |sudo tee -a 
     && sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 1C61A2656FB57B7E4DE0F4C1FC918B335044912E            # Dropbox
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - \
     && echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" |sudo tee --append /etc/apt/sources.list.d/google.list         # Google Chrome repo
+wget http://repo.vivaldi.com/stable/linux_signing_key.pub -P /tmp \
+    && sudo apt-key add /tmp/linux_signing_key.pub \
+    && echo "deb [arch=amd64] http://repo.vivaldi.com/stable/deb/ stable main" |sudo tee --append /etc/apt/sources.list.d/vivaldi.list            # Vivaldi repo
 sudo apt-add-repository -y ppa:pipelight/stable         # Silverlight OSS counterpart
 # update /etc/passwd hashing algorithm
 #sudo authconfig --passalgo=sha512 --update
@@ -112,6 +115,7 @@ sudo apt-get update -q && sudo apt-get install -y \
 # web
 sudo apt-get update -q && sudo apt-get install -y \
     google-chrome-stable \
+    vivaldi-stable \
     pidgin \
     pidgin-sipe \
     deluge \
