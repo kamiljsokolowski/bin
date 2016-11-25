@@ -15,6 +15,7 @@ sudo sh -c "echo 'deb http://download.virtualbox.org/virtualbox/debian '$(lsb_re
 sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D \
     && echo "deb [arch=amd64] http://apt.dockerproject.org/repo ubuntu-$(lsb_release -c -s) main" |sudo tee -a /etc/apt/sources.list.d/docker.list        # Docker
 sudo add-apt-repository ppa:webupd8team/sublime-text-3 --yes          # Sublime Text
+sudo add-apt-repository ppa:webupd8team/atom --yes            # Atom
 sudo add-apt-repository ppa:snwh/pulp            # Paper GTK theme
 echo "deb http://linux.dropbox.com/ubuntu $(lsb_release -cs) main" |sudo tee -a /etc/apt/sources.list.d/dropbox.list \
     && sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 1C61A2656FB57B7E4DE0F4C1FC918B335044912E            # Dropbox
@@ -120,6 +121,7 @@ sudo apt-get update -q && sudo apt-get install -y \
 # web
 sudo apt-get update -q && sudo apt-get install -y \
     sublime-text-installer \
+    atom \
     google-chrome-stable \
     vivaldi-stable \
     pidgin \
