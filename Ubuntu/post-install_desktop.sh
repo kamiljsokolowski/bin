@@ -48,3 +48,15 @@ sudo apt-get update -q && sudo apt-get install -y \
     pipelight-multi \
     && sudo pipelight-plugin --enable silverlight \
     && sudo pipelight-plugin --enable widevine
+
+echo '### add multimedia repositories and install multimedia codecs and players'
+echo "deb http://repository.spotify.com stable non-free" | sudo tee --append /etc/apt/sources.list.d/spotify.list \
+    && sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886            # Spotify client repo
+sudo apt-get update -q && sudo apt-get install -y \
+    ubuntu-restricted-extras \
+    ubuntu-restricted-addons \
+    libdvdcss2 \
+    libdvdnav4 \
+    libdvdread4 \
+    spotify-client \
+    vlc
