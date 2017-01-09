@@ -34,18 +34,6 @@ sudo apt-get update -q && sudo apt-get install -y \
 #    libvirt-bin \
 #    bridge-utils \
 #    libguestfs-tools 
-# Vagrant
-sudo apt-get update -q && sudo apt-get install -y \
-    libxslt-dev \
-    libxml2-dev \
-    libvirt-dev \
-    zlib1g-dev
-wget https://releases.hashicorp.com/vagrant/1.8.6/vagrant_1.8.6_x86_64.deb
-sudo dpkg -i vagrant_1.8.6_x86_64.deb
-vagrant plugin install \
-    vagrant-rekey-ssh \
-    vagrant-mutate \
-    vagrant-libvirt
 
 ### apps
 sudo apt-get update -q && sudo apt-get install -y \

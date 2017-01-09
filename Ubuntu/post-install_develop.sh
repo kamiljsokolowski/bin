@@ -44,3 +44,17 @@ sudo usermod -aG docker $USER
 #sudo sed -i '$acomplete -F _docker docker' /etc/bash_completion.d/docker.io
 #sudo update-rc.d docker.io defaults
 
+echo '### install Vagrant and base set of plugins ###'
+sudo apt-get update -q && sudo apt-get install -y \
+    libxslt-dev \
+    libxml2-dev \
+    libvirt-dev \
+    zlib1g-dev
+cd /tmp && wget https://releases.hashicorp.com/vagrant/1.9.1/vagrant_1.9.1_x86_64.deb
+sudo dpkg -i vagrant_1.9.1_x86_64.deb
+cd
+vagrant plugin install \
+    vagrant-rekey-ssh \
+    vagrant-mutate \
+    vagrant-libvirt
+
