@@ -34,21 +34,6 @@ sudo apt-get update -q && sudo apt-get install -y \
 #    libvirt-bin \
 #    bridge-utils \
 #    libguestfs-tools 
-# Docker (repo config included)
-echo "aufs" |sudo tee -a /etc/modules
-sudo modprobe aufs
-sudo apt-get update -q && sudo apt-get install -y \
-    apt-transport-https \
-    ca-certificates \
-    docker-engine
-#curl -sSL https://get.docker.com/ | sh
-sudo groupadd docker || true
-sudo usermod -aG docker $USER
-#sudo DEFAULT_FORWARD_POLICY="DROP" -> "ACCEPT" /etc/default/ufw
-#sudo ufw reload
-#sudo ln -sf /usr/bin/docker.io /usr/local/bin/docker
-#sudo sed -i '$acomplete -F _docker docker' /etc/bash_completion.d/docker.io
-#sudo update-rc.d docker.io defaults
 # Vagrant
 sudo apt-get update -q && sudo apt-get install -y \
     libxslt-dev \
