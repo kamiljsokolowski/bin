@@ -5,8 +5,6 @@
 
 ### core/base
 # enable additional repositories & add 3rd party ones
-sudo sed -i -e '/ partner/ s/# //' /etc/apt/sources.list         # Partner
-sudo sed -i -e '/extras.ubuntu.com/ s/# //' /etc/apt/sources.list            # Extras
 sudo sh -c "echo 'deb http://download.virtualbox.org/virtualbox/debian '$(lsb_release -cs)' contrib non-free' > /etc/apt/sources.list.d/virtualbox.list" \
     && wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- |sudo apt-key add -           # Virtualbox
 # WARNING! Utilizing a temporary workaround until Docker Ubuntu repo https comms issue is resolved
@@ -34,19 +32,7 @@ sudo apt-add-repository -y ppa:pipelight/stable         # Silverlight OSS counte
 
 ### sysadmin
 sudo apt-get update -q && sudo apt-get install -y \
-    ssh \
-    htop \
-    cifs-utils \
-    unzip \
-    unrar \
-    p7zip-full \
-    p7zip-rar \
-    tcpdump \
-    tree \
-    nmap \
-    iptraf-ng \
-    python-setuptools \
- && sudo easy_install pip
+    nmap
 
 ### server
 # KVM/QEMU+libvirt
@@ -93,17 +79,7 @@ vagrant plugin install \
 
 ### apps
 sudo apt-get update -q && sudo apt-get install -y \
-    curl \
-    dropbox \
-    tmux \
-    git \
-    vim \
-    irssi \
-    zsh 
-
-# (optional) zsh + oh-my-zsh plugin (requires reboot)
-wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - |sudo zsh
-chsh -s `which zsh`
+    dropbox
 
 ### desktop
 # DE
