@@ -5,13 +5,6 @@
 
 ### core/base
 # enable additional repositories & add 3rd party ones
-sudo sh -c "echo 'deb http://download.virtualbox.org/virtualbox/debian '$(lsb_release -cs)' contrib non-free' > /etc/apt/sources.list.d/virtualbox.list" \
-    && wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- |sudo apt-key add -           # Virtualbox
-# WARNING! Utilizing a temporary workaround until Docker Ubuntu repo https comms issue is resolved
-# sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D \
-#    && echo "deb [arch=amd64] https://apt.dockerproject.org/repo ubuntu-$(lsb_release -c -s) main" |sudo tee -a /etc/apt/sources.list.d/docker.list        # Docker
-sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D \
-    && echo "deb [arch=amd64] http://apt.dockerproject.org/repo ubuntu-$(lsb_release -c -s) main" |sudo tee -a /etc/apt/sources.list.d/docker.list        # Docker
 sudo add-apt-repository ppa:webupd8team/sublime-text-3 --yes          # Sublime Text
 sudo add-apt-repository ppa:webupd8team/atom --yes            # Atom
 sudo add-apt-repository ppa:snwh/pulp            # Paper GTK theme
@@ -41,18 +34,10 @@ sudo apt-get update -q && sudo apt-get install -y \
 #    libvirt-bin \
 #    bridge-utils \
 #    libguestfs-tools 
-# (headless) Virtualbox
-sudo apt-get -y install build-essential dkms VirtualBox-5.1
-cd /tmp && wget http://download.virtualbox.org/virtualbox/5.1.6/Oracle_VM_VirtualBox_Extension_Pack-5.1.6.vbox-extpack
-sudo VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-*
-cd
 # Docker (repo config included)
 echo "aufs" |sudo tee -a /etc/modules
 sudo modprobe aufs
 sudo apt-get update -q && sudo apt-get install -y \
-    linux-image-extra-$(uname -r) \
-    linux-image-extra-virtual \
-    build-essential \
     apt-transport-https \
     ca-certificates \
     docker-engine
