@@ -11,3 +11,10 @@ sudo apt-get update -q && sudo apt-get install -y \
     ubuntu-gnome-desktop \
     gnome-tweak-tool \
     dconf-editor
+
+echo '### add Paper repository and install Paper GTK theme'
+sudo add-apt-repository -y ppa:snwh/pulp
+sudo apt-get update -q && sudo apt-get install -y \
+    paper-gtk-theme \
+    paper-icon-theme \
+    paper-cursor-theme

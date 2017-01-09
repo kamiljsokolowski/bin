@@ -7,7 +7,6 @@
 # enable additional repositories & add 3rd party ones
 sudo add-apt-repository ppa:webupd8team/sublime-text-3 --yes          # Sublime Text
 sudo add-apt-repository ppa:webupd8team/atom --yes            # Atom
-sudo add-apt-repository ppa:snwh/pulp            # Paper GTK theme
 echo "deb http://linux.dropbox.com/ubuntu $(lsb_release -cs) main" |sudo tee -a /etc/apt/sources.list.d/dropbox.list \
     && sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 1C61A2656FB57B7E4DE0F4C1FC918B335044912E            # Dropbox
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - \
@@ -28,11 +27,6 @@ sudo apt-get update -q && sudo apt-get install -y \
     dropbox
 
 ### desktop
-# DE
-sudo apt-get update -q && sudo apt-get install -y \
-    paper-gtk-theme \
-    paper-icon-theme \
-    paper-cursor-theme
 # sysadmin
 sudo apt-get update -q && sudo apt-get install -y \
     wireshark \
