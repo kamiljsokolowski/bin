@@ -23,18 +23,6 @@ sudo apt-add-repository -y ppa:pipelight/stable         # Silverlight OSS counte
 # only root can view /root dir
 #sudo chmod 0700 /root
 
-### sysadmin
-sudo apt-get update -q && sudo apt-get install -y \
-    nmap
-
-### server
-# KVM/QEMU+libvirt
-#sudo apt-get update -q && sudo apt-get install -y \
-#    qemu-kvm \
-#    libvirt-bin \
-#    bridge-utils \
-#    libguestfs-tools 
-
 ### apps
 sudo apt-get update -q && sudo apt-get install -y \
     dropbox
@@ -42,9 +30,6 @@ sudo apt-get update -q && sudo apt-get install -y \
 ### desktop
 # DE
 sudo apt-get update -q && sudo apt-get install -y \
-    ubuntu-gnome-desktop \
-    gnome-tweak-tool \
-    dconf-editor \
     paper-gtk-theme \
     paper-icon-theme \
     paper-cursor-theme
