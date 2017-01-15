@@ -22,6 +22,7 @@ sudo apt-get update -q && sudo apt-get install -y \
 echo '### add desktop app repositories and install desktop apps'
 sudo add-apt-repository -y ppa:webupd8team/sublime-text-3          # Sublime Text
 sudo add-apt-repository -y ppa:webupd8team/atom            # Atom
+sudo add-apt-repository -y ppa:danielrichter2007/grub-customizer            # GRUB Customizer
 echo "deb http://linux.dropbox.com/ubuntu $(lsb_release -cs) main" |sudo tee -a /etc/apt/sources.list.d/dropbox.list \
     && sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 1C61A2656FB57B7E4DE0F4C1FC918B335044912E            # Dropbox
 sudo add-apt-repository -y ppa:webupd8team/java            # Oracle Java
@@ -33,6 +34,7 @@ wget http://repo.vivaldi.com/stable/linux_signing_key.pub -P /tmp \
 sudo apt-add-repository -y ppa:pipelight/stable         # Silverlight OSS counterpart
 echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections            # auto-accept Oracle Java license
 sudo apt-get update -q && sudo apt-get install -y \
+    grub-customizer \
     dropbox \
     vinagre \
     sublime-text-installer \
