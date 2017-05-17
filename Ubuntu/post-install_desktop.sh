@@ -4,6 +4,11 @@ set -o verbose
 set -o errexit
 #set -o nounset
 
+echo '### get the latest graphics drivers ###'
+sudo add-apt-repository -y ppa:graphics-drivers/ppa
+sudo apt-get update -q && sudo apt-get install -y \
+    nvidia-378
+
 echo '### add GNOME 3 repository and install GNOME 3'
 sudo apt-add-repository -y ppa:gnome3-team/gnome3-staging
 sudo apt-add-repository -y ppa:gnome3-team/gnome3
