@@ -24,6 +24,26 @@ sudo apt-get update -q && sudo apt-get install -y \
     paper-icon-theme \
     paper-cursor-theme
 
+echo '### add ARC repository and install ARC GTK theme'
+# arc theme
+echo "deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /" |sudo tee -a /etc/apt/sources.list.d/arc-theme.list \
+wget -nv https://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key -O /tmp/Release.key \
+    && sudo apt-key add /tmp/Release.key
+sudo apt-get update -q && sudo apt-get install -y \
+    arc-theme
+# arc red theme
+git clone https://github.com/mclmza/arc-theme-Red --depth 1 ${GIT_BARE_REPO}/arc-theme-Red
+cd ${GIT_BARE_REPO}/arc-theme-Red \
+    && ./autogen.sh --prefix=/usr \
+    && sudo make install
+cd -
+# icons
+git clone https://github.com/horst3180/arc-icon-theme --depth 1 ${GIT_BARE_REPO}/arc-icon-theme
+cd ${GIT_BARE_REPO}/arc-icon-theme \
+    && ./autogen.sh --prefix=/usr \
+    && sudo make install
+cd -
+
 echo '### add desktop app repositories and install desktop apps'
 sudo add-apt-repository -y ppa:webupd8team/sublime-text-3          # Sublime Text
 sudo add-apt-repository -y ppa:webupd8team/atom            # Atom
