@@ -37,12 +37,18 @@ cd ${GIT_BARE_REPO}/arc-theme-Red \
     && ./autogen.sh --prefix=/usr \
     && sudo make install
 cd -
-# icons
+
+echo '### add ARC icon theme'
 git clone https://github.com/horst3180/arc-icon-theme --depth 1 ${GIT_BARE_REPO}/arc-icon-theme
 cd ${GIT_BARE_REPO}/arc-icon-theme \
     && ./autogen.sh --prefix=/usr \
     && sudo make install
 cd -
+
+echo '### add Papirus icon theme'
+sudo add-apt-repository -y ppa:papirus/papirus
+sudo apt update -q && sudo apt install -y \
+    papirus-icon-theme
 
 echo '### add desktop app repositories and install desktop apps'
 sudo add-apt-repository -y ppa:webupd8team/sublime-text-3          # Sublime Text
