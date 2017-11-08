@@ -31,6 +31,12 @@ wget -nv https://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04
     && sudo apt-key add /tmp/Release.key
 sudo apt-get update -q && sudo apt-get install -y \
     arc-theme
+# arc red theme
+git clone https://github.com/mclmza/arc-theme-Red --depth 1 ${GIT_BARE_REPO}/arc-theme-Red
+cd ${GIT_BARE_REPO}/arc-theme-Red \
+    && ./autogen.sh --prefix=/usr \
+    && sudo make install
+cd -
 # icons
 git clone https://github.com/horst3180/arc-icon-theme --depth 1 ${GIT_BARE_REPO}/arc-icon-theme
 cd ${GIT_BARE_REPO}/arc-icon-theme \
