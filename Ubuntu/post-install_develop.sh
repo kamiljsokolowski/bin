@@ -43,6 +43,7 @@ sudo usermod -aG docker $USER
 #sudo ln -sf /usr/bin/docker.io /usr/local/bin/docker
 #sudo sed -i '$acomplete -F _docker docker' /etc/bash_completion.d/docker.io
 #sudo update-rc.d docker.io defaults
+sudo pip install --no-cache docker-compose
 
 echo '### install Vagrant and base set of plugins ###'
 sudo apt-get update -q && sudo apt-get install -y \
