@@ -44,6 +44,11 @@ sudo usermod -aG docker $USER
 #sudo sed -i '$acomplete -F _docker docker' /etc/bash_completion.d/docker.io
 #sudo update-rc.d docker.io defaults
 sudo pip install --no-cache docker-compose
+if [ ! -d ${HOME}/.zsh/completion ]
+then
+    mkdir -p ${HOME}/.zsh/completion
+fi
+curl -L https://raw.githubusercontent.com/docker/compose/1.17.1/contrib/completion/zsh/_docker-compose > ~/.zsh/completion/_docker-compose
 
 echo '### install Vagrant and base set of plugins ###'
 sudo apt-get update -q && sudo apt-get install -y \
