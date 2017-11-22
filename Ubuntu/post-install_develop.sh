@@ -64,3 +64,6 @@ vagrant plugin install \
     vagrant-mutate \
     vagrant-libvirt
 
+echo '### install Packer ###'
+cd /tmp && wget https://releases.hashicorp.com/packer/1.1.2/packer_1.1.2_linux_amd64.zip
+cd
